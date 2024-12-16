@@ -1,4 +1,4 @@
-# 4-BIT-RIPPLE-COUNTER
+![image](https://github.com/user-attachments/assets/7cc52062-cc38-46b8-91e7-4af816901d3e)# 4-BIT-RIPPLE-COUNTER
 
 **AIM:**
 
@@ -26,15 +26,85 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 /* write all the steps invloved */
 
-**PROGRAM**
+PROGRAM
 
 /* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
 
- Developed by: RegisterNumber:
-*/
+ Developed by:  HALIMA HARISHA A
+ 
+ RegisterNumber:24901005
 
-**RTL LOGIC FOR 4 Bit Ripple Counter**
+~~~
 
-**TIMING DIGRAMS FOR 4 Bit Ripple Counter**
+module exp12(
+   input wire clk,  // Clock input
+   output reg [3:0] count // 4-bit counter output
+);
 
-**RESULTS**
+// Counter logic
+always @(posedge clk) begin
+   if (count == 4'b1111) // Reset when count reaches 15
+       count <= 4'b0000;
+   else
+       count <= count + 1; // Increment count
+end
+
+endmodule
+
+// Testbench
+module RippleCounter_tb;
+
+// Inputs
+reg clk;
+
+// Outputs
+wire [3:0] count;
+
+// Instantiate the counter
+RippleCounter uut(
+   .clk(clk),
+   .count(count)
+);
+
+// Clock generation
+initial begin
+   clk = 0;
+   forever #5 clk = ~clk; // Toggle clock every 5 time units
+end
+
+// Stimulus
+initial begin
+   // Wait for a few clock cycles
+   #10;
+   
+   // Display header
+   $display("Time | Count");
+   $display("-----------------");
+   
+   // Functional table testing
+   // Increment count 16 times and display the count
+   repeat (16) begin
+       #5; // Wait for one clock cycle
+       $display("%4d | %b", $time, count);
+   end
+   
+   // End simulation
+   $finish;
+end
+
+endmodule
+~~~
+
+RTL LOGIC FOR 4 Bit Ripple Counter
+
+![Screenshot 2024-12-16 214830](https://github.com/user-attachments/assets/75cca33e-e457-4a1d-8978-2920f68aa5bb)
+
+
+TIMING DIGRAMS FOR 4 Bit Ripple Counter
+
+![Screenshot 2024-12-16 214837](https://github.com/user-attachments/assets/1451561d-f2ae-467b-bd2a-b7a67d97a2fe)
+
+RESULTS
+Thus the program executed succesfully.
+
+
