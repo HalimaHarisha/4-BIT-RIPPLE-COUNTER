@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/7cc52062-cc38-46b8-91e7-4af816901d3e)# 4-BIT-RIPPLE-COUNTER
+
 
 **AIM:**
 
